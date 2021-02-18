@@ -62,11 +62,11 @@ https://wvs.earthdata.nasa.gov/api/v1/snapshot?REQUEST=GetSnapshot&LAYERS=MODIS_
 
 ### Message from Stage Orchestrator to Processor
 The message posted on the queue has the following structure
-    <<date to be downloaded>>
-    <<latitude for lower left corner>>
-    <<longitude for lower left corner>>
-    <<latitude for upper right  corner>>
-    <<longitude for upper right corner>>
+    &lt;date to be downloaded&gt;
+    &lt;latitude for lower left corner&gt;
+    &lt;longitude for lower left corner&gt;
+    &lt;latitude for upper right corner&gt;
+    &lt;longitude for upper right corner&gt;
 
 ## Message from Processor to Stage Orchestrator
 The message posted on the queue has the following structure
