@@ -7,4 +7,4 @@ See [documentation](/docs)
 There are no release so far.
 
 ## License
-AntFarm is free software, and may be redistributed under the terms of the [MIT License](/LICENSE).
+AntFarm is © 2021 Mattias Lindberg. It is free software, and may be redistributed under the terms of the [MIT License](/LICENSE).
