@@ -7,12 +7,12 @@ It is a design pattern with reusable components, and there is also a reference i
 ### Node
 A computer instance.
 
-A node can either be used as an [Orchestrator](/antfarm.md#orchestrator) or as a [Worker](/antfarm.md#worker).
+A node can either be used as an [Orchestrator](antfarm.md#orchestrator) or as a [Worker](antfarm.md#worker).
 
 ### Orchestrator
 Responsible for distribution of work.
 
-A solution may contain several different types of Orchestrators, each specialized in distribution of work to a single type of [Worker](/antfarm.md#worker) node.
+A solution may contain several different types of Orchestrators, each specialized in distribution of work to a single type of [Worker](antfarm.md#worker) node.
 
 ### Worker
 Responsible for execution of work.
@@ -37,8 +37,8 @@ An ordered list of tasks that are to be executed.
 A Work Queue is used by an Orchestrator to publish task that needs to be execute to Workers.
 Communication from up-stream Orchestrators to assign tasks to down-stream Orchestrators also uses a Work Queue.
 
-Each Work Queue is used for communication between a specific [Orchestrator](/antfarm.md#orchestrator) and a specific type of [Workers](/antfarm.md#worker), the direction of
-communication is from [Orchestrator](/antfarm.md#orchestrator) to [Worker](/antfarm.md#worker).
+Each Work Queue is used for communication between a specific [Orchestrator](antfarm.md#orchestrator) and a specific type of [Workers](antfarm.md#worker), the direction of
+communication is from [Orchestrator](antfarm.md#orchestrator) to [Worker](antfarm.md#worker).
 
 ### Report Queue
 An ordered list of execution reports.
@@ -46,8 +46,8 @@ An ordered list of execution reports.
 A Report Queue is used by Workers to communicate the result of an execution back to the Orchestrator.
 Communication from down-stream Orchestrators to report back status to up-stream Orchestrators also uses a Report Queue.
 
-Each Report Queue is used for communication between a specific [Orchestrator](/antfarm.md#orchestrator) and a specific type of [Workers](/antfarm.md#worker), the direction of
-communication is from [Worker](/antfarm.md#worker) to [Orchestrator](/antfarm.md#orchestrator).
+Each Report Queue is used for communication between a specific [Orchestrator](antfarm.md#orchestrator) and a specific type of [Workers](antfarm.md#worker), the direction of
+communication is from [Worker](antfarm.md#worker) to [Orchestrator](antfarm.md#orchestrator).
 
 ## Scheduling of work
 
