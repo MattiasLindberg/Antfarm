@@ -8,5 +8,9 @@ and that it has many libraries available that are useful for solving problems in
 The code uses depedency injection to minimize the need to change the framework code, the user should focus his work on implementing
 the orchestration and work code that is unique to his solution. 
 
+A key feature of the reference implementation is usage of dependency injection, this enable a user of the framework to inject the code unique to their solution while still reusing the generic 
+code for [Orchestrators](terminology.md#orchestrator) and [Workers](terminology.md#worker). 
+
 The [python-dependency-injection](https://pypi.org/project/python-dependency-injection/) framework is used to support dependency injection.
 
+## Connection between nodes
