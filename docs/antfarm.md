@@ -1,63 +1,54 @@
-# AntFarm - A framework for parallell execution of tasks
-AntFarm is a general purpose framework intended to support parallell execution of tasks. 
+# Antfarm - A framework for parallell execution of tasks
+Antfarm is a general purpose framework intended to support parallell execution of tasks. 
 It is a design pattern with reusable components, and there is also a reference implementation to show how it can be used.
 
-## Terminology
+Antfarm is my first attempt at this type of framework and the guiding priciples has been "reduce the problem" and KISS.
 
-### Node
-A computer instance.
+Antfarm is NOT intended to be a multi-threaded, GPU-aware, shared-memory and storage optimized framework.
 
-A node can either be used as an [Orchestrator](antfarm.md#orchestrator) or as a [Worker](antfarm.md#worker).
+## Terminology and definitions
+See [Terminology](terminology.md) to learn about the terminology used in Artfarm.
 
-### Orchestrator
-Responsible for distribution of work.
-
-A solution may contain several different types of Orchestrators, each specialized in distribution of work to a single type of [Worker](antfarm.md#worker) node.
-
-### Worker
-Responsible for execution of work.
-
-A solution may contain several different types of workers, each specialized in performing a single task. E.g., the reference implementation [Clouds](/clouds.md) has one worker responsible for downloading images and one worker for analysing the images.
-
-### Storage
-Location where results from a Worker is stored.
-
-Storage can be files on a shared disk, in cloud storage, in a NoSQL database, or any other type of location where data
-can be stored. A key characteristic of Storage is that all Storage is accessible by all Nodes in the AntFarm, i.e. 
-local disk on a Worker is not considered to be Storage.
-
-Storage hold all types of data that is used for input to a Worker or as output from a Worker.
-
-### Transient Storage
-Location where temporary data is stored, i.e. data which are only used locally within a specific Node.
-
-### Work Queue
-An ordered list of tasks that are to be executed.
-
-A Work Queue is used by an Orchestrator to publish task that needs to be execute to Workers.
-Communication from up-stream Orchestrators to assign tasks to down-stream Orchestrators also uses a Work Queue.
-
-Each Work Queue is used for communication between a specific [Orchestrator](antfarm.md#orchestrator) and a specific type of [Workers](antfarm.md#worker), the direction of
-communication is from [Orchestrator](antfarm.md#orchestrator) to [Worker](antfarm.md#worker).
-
-### Report Queue
-An ordered list of execution reports.
-
-A Report Queue is used by Workers to communicate the result of an execution back to the Orchestrator.
-Communication from down-stream Orchestrators to report back status to up-stream Orchestrators also uses a Report Queue.
-
-Each Report Queue is used for communication between a specific [Orchestrator](antfarm.md#orchestrator) and a specific type of [Workers](antfarm.md#worker), the direction of
-communication is from [Worker](antfarm.md#worker) to [Orchestrator](antfarm.md#orchestrator).
+## Processing pattern
+In the Antfarm framework everything starts with the first [Orchestrator](terminology.md#orchestrator) in the pipeline.
 
 ## Scheduling of work
+When an [Orchestrator](terminology.md#orchestrator) wants to get some work done it post tasks on a 
+[Work Queue](terminology.md#work-queue).
+
+The [Work Queue](terminology.md#work-queue) is unique for communication between the specific instance of 
+[Orchestrator](terminology.md#orchestrator) node and the [Worker](terminology.md#worker) nodes is to perform the work.
+Each [Worker](terminology.md#worker) node listen to only one [Work Queue](terminology.md#work-queue).
+
+When a [Worker](terminology.md#worker) has completed its work it stores its result on [Storage](terminology.md#storage) and report back to the [Orchestrator](terminology.md#orchestrator) 
+using a [Report Queue](terminology.md#report-queue).
 
 ## Fault Tolerance
+Fault tolerance is not a priority for Antfarm at this point in time, it is still under development.
 
 ### Hardware failures
 
 ### Software issues
 
+## Reference implementation
+The reference implementation of the Antfarm framework is done in Python and the target environment is Linux containers running in Azure Container Instances.
+
+A key feature of the reference implementation is usage of dependency injection, this enable a user of the framework to inject the code unique to their solution while still reusing the generic 
+code for [Orchestrators](terminology.md#orchestrator) and [Workers](terminology.md#worker). 
+
+More details see [Antfarm Framework Implementation](fx-implementation.md).
 
 ## Different ways to parallalize
 Old style: Special hw like CM2 with 65000 processors
 New style: Commodity hw
+
+## Comparing with other frameworks
+
+### MapReduce
+The best know general framework of execution for parallelization is MapReduce, it is intended for really massive parallelization handling terabytes of data.
+- MapReduce use a single master node to drive the execution, Antfarm use a hierarchy of Orchestrators.
+- MapReduce use local disk on the worker nodes to store data used between stages (called intermediate files), Antfarm use persistent storage outside the worker nodes.
+
+The reason for using persistent storage outside the worker nodes is that in a scientific applications the intermediate files are often relevant after calculations are completed.
+As an example, when the [Clouds](clouds.md) application execute it download satellite images that may be reused in future re-executions of the application with an updated
+analysis-algorithm or they may be used during visualization of results. 
