@@ -1,4 +1,4 @@
-# AntFarm
+# Antfarm
 AntFarm is a framework for parallell execution of independent or semi-independent tasks.
 
 See [documentation](/docs)
