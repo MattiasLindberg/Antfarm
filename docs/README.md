@@ -1,13 +1,18 @@
 # Antfarm - A framework for parallell execution of tasks
 Antfarm is a general purpose framework intended to support parallell execution of tasks. 
-It is a design pattern with reusable components, and there is also a reference implementation to show how it can be used.
+It is a design pattern and a reference implementation, in addition there will be a small validation application to verify a deployment
+is configured well.
 
 Antfarm is my first attempt at this type of framework and the guiding priciples has been "reduce the problem" and KISS.
 
-Antfarm is NOT intended to be a multi-threaded, GPU-aware, shared-memory and storage optimized framework.
+Antfarm is NOT intended to be a multi-threaded, GPU-aware, shared-memory or storage optimized framework.
 
 ## Overview of the  Design Pattern
-In the Antfarm framework everything starts with the first [Orchestrator](terminology.md#orchestrator) in the pipeline.
+In the Antfarm framework everything starts with the first [Orchestrator](terminology.md#orchestrator) in the [Pipeline](terminology.md#pipeline). 
+It always initiate work for the next level by posting tasks to the [Work Queue](terminology.md#work-queue), the receiver may by another [Orchestrator](terminology.md#orchestrator) or a [Worker](terminology.md#worker). Results are always communicated back to the initiator using 
+a [Result Queue](terminology.md#result-queue).
+
+![Overview of the Design Pattern](../images/pattern.png)
 
 ## Terminology and Definitions
 See [Terminology](terminology.md) to learn about the terminology used in Artfarm.
@@ -16,7 +21,7 @@ See [Terminology](terminology.md) to learn about the terminology used in Artfarm
 To learn about the design of Antfarm please see [Antfarm Design](design.md).
 
 ## Reference Implementation
-The reference implementation of the Antfarm framework is done in Python and the target environment is Linux containers running in Azure Container Instances.
+The reference implementation of the Antfarm framework is done in Python and the target environment is Linux containers.
 
 More details are available at [Antfarm Framework Implementation](fx-implementation.md).
 
