@@ -1,7 +1,8 @@
 # Antfarm
-AntFarm is a framework for parallell execution of independent or semi-independent tasks.
+Antfarm is a general purpose framework intended to support parallell execution of independent or semi-independent tasks. 
+It is a design pattern with reusable components, and there is also a reference implementation to show how it can be used.
 
-See [documentation](/docs)
+See [documentation](/docs) for more information.
 
 ## Releases
 There are no release so far.
