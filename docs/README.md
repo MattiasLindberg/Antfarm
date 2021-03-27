@@ -9,8 +9,7 @@ Antfarm is NOT intended to be a multi-threaded, GPU-aware, shared-memory or stor
 
 ## Overview of the  Design Pattern
 In the Antfarm framework everything starts with the first [Orchestrator](terminology.md#orchestrator) in the [Pipeline](terminology.md#pipeline). 
-It always initiate work for the next level by posting tasks to the [Work Queue](terminology.md#work-queue), the receiver may by another [Orchestrator](terminology.md#orchestrator) or a [Worker](terminology.md#worker). Results are always communicated back to the initiator using 
-a [Result Queue](terminology.md#result-queue).
+It always initiate work for the next level by posting tasks to the [Work Queue](terminology.md#work-queue), the receiver may by another [Orchestrator](terminology.md#orchestrator) or a [Worker](terminology.md#worker). Results are always communicated back to the initiator using a [Response Queue](terminology.md#response-queue).
 
 ![Overview of the Design Pattern](../images/pattern.png)
 

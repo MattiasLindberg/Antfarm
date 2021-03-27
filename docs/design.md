@@ -9,7 +9,7 @@ The [Work Queue](terminology.md#work-queue) is unique for communication between 
 Each [Worker](terminology.md#worker) node listen to only one [Work Queue](terminology.md#work-queue).
 
 When a [Worker](terminology.md#worker) has completed its work it stores its result on [Storage](terminology.md#storage) and report back to the [Orchestrator](terminology.md#orchestrator) 
-using a [Report Queue](terminology.md#report-queue).
+using a [Response Queue](terminology.md#response-queue).
 
 ## Load Balancing of Work between Nodes
 The Antfarm framework uses many [Worker](terminology.md#worker) nodes that each will contribute to the work. A problem that can occur is that some nodes get harder tasks to execute and 

@@ -14,8 +14,8 @@ code for [Orchestrators](terminology.md#orchestrator) and [Workers](terminology.
 
 The [python-dependency-injection](https://pypi.org/project/python-dependency-injection/) framework is used to support dependency injection.
 
-## Worker and Return Queue
-The implementation of [Work Queue](terminology.md#work-queue) and [Result Queue](terminology.md#result-queue) will use 
+## Worker and Response Queue
+The implementation of [Work Queue](terminology.md#work-queue) and [Response Queue](terminology.md#response-queue) will use 
 [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview). It provides persistent storage, ordered delivery, retry mechanism and more.
 
 Each queue in the [Pipeline](terminology.md#pipeline) will be represented as a [Topic](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions#topics-and-subscriptions) in an Azure Service Bus.

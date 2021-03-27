@@ -43,13 +43,13 @@ Communication from up-stream Orchestrators to assign tasks to down-stream Orches
 Each Work Queue is used for communication between a specific [Orchestrator](terminology.md#orchestrator) and a specific type of [Workers](terminology.md#worker), the direction of
 communication is from [Orchestrator](terminology.md#orchestrator) to [Worker](terminology.md#worker).
 
-## Report Queue
-An ordered list of execution reports.
+## Response Queue
+An ordered list of execution results.
 
-A Report Queue is used by Workers to communicate the result of an execution back to the Orchestrator.
-Communication from down-stream Orchestrators to report back status to up-stream Orchestrators also uses a Report Queue.
+A Response Queue is used by Workers to communicate the result of an execution back to the Orchestrator.
+Communication from down-stream Orchestrators to report back status to up-stream Orchestrators also uses a Response Queue.
 
-Each Report Queue is used for communication between a specific [Orchestrator](terminology.md#orchestrator) and a specific type of [Workers](terminology.md#worker), the direction of
+Each Response Queue is used for communication between a specific [Orchestrator](terminology.md#orchestrator) and a specific type of [Workers](terminology.md#worker), the direction of
 communication is from [Worker](terminology.md#worker) to [Orchestrator](terminology.md#orchestrator).
 
 ## Pipeline
